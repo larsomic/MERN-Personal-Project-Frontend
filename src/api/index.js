@@ -1,5 +1,5 @@
 import axios from 'axios';
 
-const url = 'http://;pca;host:5000/posts';
+const url = 'https://mikelarson.herokuapp.com/projects';
 
 export const fetchPosts = () => axios.get(url)

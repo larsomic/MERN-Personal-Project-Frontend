@@ -1,0 +1,215 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    /* color: white; */
+}
+
+#main {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+
+#app {
+    width: 100%;
+    height: 100%;
+}
+
+.center {
+    position: static;
+    top: 50%;
+    left: 50%;
+    transform: translate(12.5%, 5%);
+}
+
+.fullPageCard {
+    position: absolute;
+    width: 80%;
+    height: 85%;
+    top: 57.5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow-y: scroll;
+}
+
+*{
+    /* HIDE SCROLL BAR */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+
+/* HIDE SCROLL BAR */
+*::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+
+.resumeTitle{
+    font-size: xx-large;
+    margin-bottom: 0;
+    font-weight: bold;
+    font-family: 'Libre Baskerville', serif;
+    color: #1976d2;
+    margin-top: 0;
+}
+
+.resumeHeader{
+    text-decoration: underline;
+    font-size: large;
+    font-weight: bold;
+    font-family: 'Libre Baskerville', serif;
+    color: #1976d2;
+    padding-top: 0.5em;
+}
+
+.personalLinksContainer{
+    display: inline-flex;
+    margin-left: 3%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.pageContainer{
+    position: relative;
+    margin: auto;
+    top: 5vh;
+    height: 100vh;
+    max-width: 950px;
+}
+
+.fullPagePaper{
+    height: 100vh;
+}
+
+.personalLinkNormalText{
+    font-family: 'Libre Franklin', sans-serif;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    color: black;
+    text-decoration: none;
+}
+
+.personalLinksContainerPaddingLeft{
+    display: inline;
+    margin-left: 7%;
+}
+
+.personalLink{
+    font-family: 'Libre Franklin', sans-serif;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    color: #1976d2
+}
+
+.oneRowTable{
+    width:100%; 
+}
+
+.boldText{
+    font-weight: bold;
+    padding-top: 0.5%;
+}
+
+.boldTextPaddingRight{
+    font-weight: bold;
+    margin-left: auto;
+    margin-right: 0px;
+}
+
+.fullPage{
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+}
+
+.languageBulletList{
+    font-size: 16px;
+}
+
+.titleAndDateLine{
+    display: flex;
+    padding-bottom: 0.5%;
+}
+
+.largeBullet{
+    font-weight: bolder;
+    font-size: large;
+}
+
+.rightTab{
+    margin-left: auto;
+    margin-right:0px;
+}
+
+.underConstructionText{
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: xx-large;
+    text-align: center;
+    transform: translate(0%,100%);
+}
+
+.underFullPagePaper{
+    transform: translate(-50%, 0);
+    top: 7%;
+    left: 50%;
+    margin-bottom: 100px !important;
+}
+
+.centerImage{
+    width: 50%;
+    max-width: 475px;
+    position: relative;
+    left: 25%;
+}
+
+@media screen and (max-width: 770px) {
+    .personalLink{
+        display: none;
+    }
+
+    .personalLinkNormalText{
+        text-decoration: underline;
+        color: #1976d2;
+    }   
+
+    .languageBulletPoint{
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .languageBulletList{
+        display: grid;
+    }   
+}
+
+@media screen and (min-width: 1100px) {
+    .rightTab{
+        margin-right: 370px;
+    }   
+}
+
+hr{
+    height: 0px;
+    border: none;
+    border-top: 2px solid black;
+    margin-top: 4px;
+    color: #1976d2;
+}
+
+p{
+    font-family: 'Libre Franklin', sans-serif;
+    margin: 0px;
+}
+
+td{
+    margin-right: 20px;
+    font-family: 'Libre Franklin', sans-serif;
+}
+
+@font-face {
+    font-family: 'Helvetica Neue';
+    src: local('Helvetica Neue'), url(../fonts/HelveticaNeue.ttf) format('truetype');
+  }

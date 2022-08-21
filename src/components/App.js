@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
-import Header from "./components/Header.js"
+import { createRoot } from 'react-dom/client';
 
-import Home from "./components/Home.js"
-import Resume from "./components/Resume.js"
-import Work from "./components/Work.js"
-import About from "./components/About.js"
-import Contact from "./components/Contact.js"
-import UnderConstruction from "./components/UnderConstruction.js"
+import Home from "./Home.js"
+import Resume from "./Resume.js"
+import Work from "./Work.js"
+import About from "./About.js"
+import Contact from "./Contact.js"
+import UnderConstruction from "./UnderConstruction.js"
 
 import {
     BrowserRouter as Router,
@@ -36,5 +36,6 @@ export default class App extends Component {
     }
 }
 
-const appDiv = document.getElementById("root");
-render(<App />, appDiv)
+const container = document.getElementById('app');
+const root = createRoot(container);
+root.render(<App/>);

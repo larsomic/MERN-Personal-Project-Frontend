@@ -38,6 +38,7 @@ var settingFunctionsMap = {
 var headerFunctionMap = {
   "Resume": () =>{clickMyResume()},
   "Projects": () =>{clickMyWork()},
+  "LinkedIn": () =>{window.open('https://www.linkedin.com/in/larson2/','_blank')}
 }
 
 const settings = Object.keys(settingFunctionsMap);
@@ -121,7 +122,7 @@ const Header = () => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleNavBarItemClicked}>
+                <MenuItem key={page} onClick={handleNavBarItemClicked} >
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
@@ -131,7 +132,7 @@ const Header = () => {
             variant="h6"
             noWrap
             component="div"
-            sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
+            sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }}}
           >
             Michael Larson
           </Typography>
@@ -140,7 +141,7 @@ const Header = () => {
               <Button
                 key={page}
                 onClick={handleNavBarItemClicked}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{ my: 2, color: 'white', display: 'block', textTransform: 'none'}}
               >
                 {page}
               </Button>

@@ -41,14 +41,14 @@ const Resume = () => {
                             <p>&bull; Bachelor of Science in Software Engineering</p>
                             <p className='rightTab'>&bull; Minor in Mathemtics</p>
                         </div>
-                        <p>&bull; Member of the Software Engineering and the Association for Computing Machinery club</p>
+                        <p>&bull; Member of the Software Engineering Club and the Association for Computing Machinery</p>
                         <p className='resumeHeader'>Experience</p>
                         <div className='titleAndDateLine'>    
                             <p className='boldText'>Software Engineering Intern | Meter Group Inc.</p>
                             <p className='boldTextPaddingRight'>April 2021 to Present</p>
                         </div>
                         <p>&bull; Created an automated acceptance testing suite using Robot Framework to reduce testing time at release.</p>
-                        <p>&bull; Restructured front end design using JavaScript, CSS, and HTML to fix bugs that effected over 3,000 users.</p>
+                        <p>&bull; Restructured front end design using JavaScript, CSS, and HTML to fix bugs that affected over 3,000 users.</p>
                         <p>&bull; Redesigned PostgreSQL queries leading to an over 2000% speed up for front end users.</p>
                         <div className='titleAndDateLine'>
                             <p className='boldText'>App Develoment Intern | YumYum Morale</p>

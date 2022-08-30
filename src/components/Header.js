@@ -7,10 +7,10 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+
 
 const clickMyResume = () => {
   window.location.href='/myresume'
@@ -26,6 +26,10 @@ const clickAboutMe = () => {
 
 const clickContactMe = () => {
   window.location.href='/contactme'
+};
+
+const clickHomeButton = () => {
+  window.location.href='/'
 };
 
 var settingFunctionsMap = {
@@ -88,7 +92,8 @@ const Header = () => {
             variant="h6"
             noWrap
             component="div"
-            sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+            sx={{ mr: 2, display: { xs: 'none', md: 'flex' }, cursor: 'pointer', fontWeight: 900, fontSize:' x-large' }}
+            onClick={() =>{clickHomeButton()}}
           >
             Michael Larson
           </Typography>
@@ -142,7 +147,7 @@ const Header = () => {
               <Button
                 key={page}
                 onClick={handleNavBarItemClicked}
-                sx={{ my: 2, color: 'white', display: 'block', textTransform: 'none'}}
+                sx={{ my: 2, color: 'powderblue', display: 'block', textTransform: 'none'}}
               >
                 {page}
               </Button>
@@ -152,7 +157,7 @@ const Header = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Michael Larson" src={"./../static/images/mikeSquare.jpg"} />
+                <MenuIcon style={{color: 'white', fontSize: 'xxlarge'}}/> 
               </IconButton>
             </Tooltip>
             <Menu

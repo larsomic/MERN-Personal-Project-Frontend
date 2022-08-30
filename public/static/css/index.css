@@ -26,13 +26,12 @@ html, body {
 }
 
 .fullPageCard {
-    position: absolute;
-    width: 80%;
+    width: 90%;
     height: 85%;
     top: 57.5%;
     left: 50%;
-    transform: translate(-50%, -50%);
     overflow-y: scroll;
+    margin: 0 auto;
 }
 
 *{
@@ -49,7 +48,7 @@ html, body {
 .resumeTitle{
     font-size: xx-large;
     margin-bottom: 0;
-    font-weight: bold;
+    font-weight: bold !important;
     font-family: 'Libre Baskerville', serif;
     color: #1976d2;
     margin-top: 0;
@@ -58,14 +57,14 @@ html, body {
 .resumeHeader{
     text-decoration: underline;
     font-size: large;
-    font-weight: bold;
+    font-weight: bold !important;
     font-family: 'Libre Baskerville', serif;
     color: #1976d2;
     padding-top: 0.5em;
 }
 
 .personalLinksContainer{
-    display: inline-flex;
+    display: inline;
     margin-left: 3%;
     margin-top: 1%;
     margin-bottom: 1%;
@@ -91,6 +90,11 @@ html, body {
     text-decoration: none;
 }
 
+.personalLinkColon{
+    text-decoration: none;
+    color: black;
+}
+
 .personalLinksContainerPaddingLeft{
     display: inline;
     margin-left: 7%;
@@ -108,14 +112,13 @@ html, body {
 }
 
 .boldText{
-    font-weight: bold;
-    padding-top: 0.5%;
+    font-weight: bold !important;      
 }
 
 .boldTextPaddingRight{
-    font-weight: bold;
-    margin-left: auto;
-    margin-right: 0px;
+    font-weight: bold !important;
+    margin-left: auto !important;
+    margin-right: 0px !important;
 }
 
 .fullPage{
@@ -134,13 +137,13 @@ html, body {
 }
 
 .largeBullet{
-    font-weight: bolder;
+    font-weight: bolder !important;
     font-size: large;
 }
 
 .rightTab{
-    margin-left: auto;
-    margin-right:0px;
+    margin-left: auto !important;
+    margin-right:0px !important;
 }
 
 .underConstructionText{
@@ -166,6 +169,10 @@ html, body {
 
 @media screen and (max-width: 770px) {
     .personalLink{
+        display: none;
+    }
+
+    .personalLinkColon{
         display: none;
     }
 

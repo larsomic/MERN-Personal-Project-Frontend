@@ -38,7 +38,8 @@ var settingFunctionsMap = {
 var headerFunctionMap = {
   "Resume": () =>{clickMyResume()},
   "Projects": () =>{clickMyWork()},
-  "LinkedIn": () =>{window.open('https://www.linkedin.com/in/larson2/','_blank')}
+  "LinkedIn": () =>{window.open('https://www.linkedin.com/in/larson2/','_blank')},
+  "GitHub": () =>{window.open('https://github.com/larsomic','_blank')}
 }
 
 const settings = Object.keys(settingFunctionsMap);

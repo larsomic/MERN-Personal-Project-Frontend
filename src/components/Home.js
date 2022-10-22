@@ -3,7 +3,7 @@ import Header from "./Header.js"
 import { Typography } from '@mui/material';
 import Paper from '@mui/material/Paper';
 import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 function isElementVisible(el) {
   if(!el){
@@ -51,19 +51,23 @@ class Home extends React.Component {
           <section className='homeBackground' id='section1'>
             <Paper className='centeredPaper'>
                 <div className='split left'>
-                  <img src='./../../static/images/mikeSquare.jpg' alt='' className='centeredImage'/>
+                  <div className='firstCircle'></div>
+                  <div className='secondCircle'></div>
+                  <div className='userImageCircle'></div>
                 </div>
                 <div className='split right'>
                   <Container>
                     <div id='centeredName'>
-                      <Typography variant="h2" className='homeTitle'>Michael Larson</Typography>
-                      <Typography variant="h4" className='homeSecondTitle'>Full Stack Developer</Typography>
-                      <Typography variant="h6" className='homeText'>B.S. in Software Engineering from Washington State University</Typography>
+                      <Typography variant="h2" className='homeFirstName'>Michael</Typography>
+                      <Typography variant="h2" className='homeSecondName'>Larson</Typography>
                     </div>
-                    <Button id='bottomButton' variant="contained" onClick={()=>{document.getElementById("section2").scrollIntoView({behavior: "smooth"})}}>Learn More!</Button>
                   </Container>                
                 </div>
             </Paper>
+            <div className='arrowGroup'  onClick={()=>{document.getElementById("section2").scrollIntoView({behavior: "smooth"})}}>
+              <ArrowForwardIosIcon className='lightBlueArrow'/>
+              <ArrowForwardIosIcon className='darkBlueArrow'/>
+            </div>
           </section>
           <section id='section2'>
             About Me

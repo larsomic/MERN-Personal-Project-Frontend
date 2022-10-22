@@ -85,23 +85,16 @@ const Header = () => {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar className='homeHeader' position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
             variant="h6"
             noWrap
             component="div"
-            sx={{ mr: 2, display: { xs: 'none', md: 'flex' }, cursor: 'pointer', fontWeight: 900, fontSize:' x-large' }}
+            sx={{ mr: 2, display:'flex', cursor: 'pointer'}}
             onClick={() =>{clickHomeButton()}}
-          >
-            Michael Larson
-          </Typography>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }}}
+            className="headerName"
           >
             Michael Larson
           </Typography>
@@ -120,7 +113,7 @@ const Header = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <MenuIcon style={{color: 'white', fontSize: 'xxlarge'}}/> 
+                <MenuIcon style={{color: 'ccf5ff', fontSize: 'xxlarge'}}/> 
               </IconButton>
             </Tooltip>
             <Menu

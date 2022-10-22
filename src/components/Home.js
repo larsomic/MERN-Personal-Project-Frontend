@@ -44,7 +44,7 @@ class Home extends React.Component {
   render(){
     return (
       <div>
-        <div style={{display: 'none'}}>
+        <div className='headerContainer'>
           <Header />
         </div>
         <div className='content'>
@@ -70,7 +70,25 @@ class Home extends React.Component {
             </div>
           </section>
           <section id='section2'>
-            About Me
+          <Paper className='centeredPaper'>
+                <div className='split left'>
+                <Container>
+                    <div id='centeredName'>
+                      <Typography variant="h2" className='homeFirstName'>About</Typography>
+                      <Typography variant="h2" className='homeSecondName'>Me.</Typography>
+                    </div>
+                  </Container>     
+                </div>
+                <div className='split right'>
+                  <Container>
+                    <div id='centeredName'>
+                      <Typography variant="h2" className='homeAboutMeText'>
+                        I am a software engineer, blah blah blah blah puppies and rainbows!!! Yay!! Here's more stuff about meeeeeeeeeeeeeeeee and projects and what I want to doooooooo.......
+                      </Typography>
+                    </div>
+                  </Container>                
+                </div>
+            </Paper>
           </section>
           <section id='section3'>
             See My Work!

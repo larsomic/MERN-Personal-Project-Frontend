@@ -265,6 +265,7 @@ body .content {
 }
 
 body .content section {
+    position: relative;
     justify-content: center;
     align-items: center;
     width: 100vw;
@@ -273,8 +274,7 @@ body .content section {
 }
 
 .homeBackground{    
-    background-color: #1976D2;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='105' height='105' viewBox='0 0 20 20'%3E%3Cg fill-opacity='0.56'%3E%3Cpolygon fill='%23092D4F' points='20 10 10 0 0 0 20 20'/%3E%3Cpolygon fill='%23092D4F' points='0 10 0 20 10 20'/%3E%3C/g%3E%3C/svg%3E");
+    background-color: #222f40;
 }
 
 .centeredPaper{
@@ -285,10 +285,9 @@ body .content section {
     margin-left: auto;
     margin-right: auto;
     height: 80%;
-    box-shadow: 10px 10px 40px 20px rgb(0 0 0) !important;
-    border-radius: 12px !important;
-    background-color: #e1e1e1 !important;
     min-width: 300px;
+    background-color: unset !important;
+    box-shadow: none !important;
 }
 
 .verticalLine {
@@ -298,6 +297,42 @@ body .content section {
     right: 50%;
     margin-left: 0px !important;
     height: 100%;
+}
+
+.arrowGroup{
+    display: table;
+    margin: 0 auto;
+    transform: rotate(90deg) scale(1.9);;
+    margin-top: 6vh;
+}
+
+.darkBlueArrow{
+    color: #0090c1;
+    font-size: 5vmin !important;
+}
+
+.lightBlueArrow{
+    margin-right: -35%;
+    color: #98eaff;
+    font-size: 5vmin !important;
+}
+
+.homeText{
+    font-family: 'Lora', serif !important;
+}
+
+.homeFirstName{
+    font-family: 'Poppins', sans-serif !important;
+    line-height: 0.9 !important;
+    font-size: 9vw !important;
+    color: #0090c1;
+}
+
+.homeSecondName{
+    font-family: 'Poppins', sans-serif !important;
+    line-height: 0.9 !important;
+    font-size: 9vw !important;
+    color: #98eaff;
 }
 
 /* https://www.w3schools.com/howto/howto_css_split_screen.asp */
@@ -318,38 +353,47 @@ body .content section {
 
     .right {
         right: 0;
-        border-left: solid;
     }
 
-    .centeredImage{
-        width: 90%;
+    #centeredName{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .firstCircle{
+        background-color: #0090c1;
+        width: 36vw;
+        height: 36vw;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-54%, -54%);
+        clip-path: circle();
+    }
+    
+    .secondCircle{
+        background-color: #98eaff;
+        width: 36vw;
+        height: 36vw;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-52%, -52%);
+        clip-path: circle();
+    }
+    
+    .userImageCircle{
+        background: url(../images/mikeSquare.jpg) 50% 0% no-repeat;
+        width: 36vw;
+        height: 36vw;
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         clip-path: circle();
-    }
-
-    .homeText{
-        font-family: 'Lora', serif !important;
-    }
-
-    .homeTitle{
-        font-family: 'Poppins', sans-serif !important;
-        line-height: 0.9 !important;
-        font-size: 9vw !important;
-    }
-
-    .homeSecondTitle{
-        font-family: 'Poppins', sans-serif !important;
-    }
-
-    #bottomButton{
-        left: 50%;
-        position: absolute;
-        bottom: 80px;
-        margin-left: -96px; 
-        font-size: x-large !important;  
+        background-size: 140%;
     }
 }
 
@@ -380,28 +424,61 @@ body .content section {
         max-width: 200px;
     }
 
+    .firstCircle{
+        background-color: #0090c1;
+        width: 42vw;
+        height: 42vw;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-54%, -54%);
+        clip-path: circle();
+    }
+    
+    .secondCircle{
+        background-color: #98eaff;
+        width: 42vw;
+        height: 42vw;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-52%, -52%);
+        clip-path: circle();
+    }
+    
+    .userImageCircle{
+        background: url(../images/mikeSquare.jpg) 50% 0% no-repeat;
+        width: 42vw;
+        height: 42vw;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        clip-path: circle();
+        background-size: 140%;
+    }
+
     #centeredName{
         text-align: center;
-    }
-
-    .homeText{
-        font-family: 'Lora', serif !important;
-    }
-
-    .homeTitle{
-        font-family: 'Poppins', sans-serif !important;
-        line-height: 0.9 !important;
-    }
-
-    .homeSecondTitle{
-        font-family: 'Poppins', sans-serif !important;
-        font-size: x-large !important;
-    }
-
-    #bottomButton{
-        left: 50%;
         position: absolute;
-        bottom: 20px;
-        margin-left: -62.5px;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
+
+    .homeFirstName{
+        font-size: 14vmin !important;
+    }
+
+    .homeSecondName{
+        font-size: 14vmin !important;
+    }
+}
+
+#section2{
+    background-color: #e1e1e1 !important;
+}
+
+#section3{
+    background-color: #e1e1e1 !important;
 }

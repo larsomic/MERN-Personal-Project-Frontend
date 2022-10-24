@@ -532,13 +532,25 @@ body .content section {
     background-color: #0090c1;
     font-family: 'Poppins', sans-serif !important;
     width: 40%;
+    margin-top: 15px;
 }
 
 #contactField{
     background-color: #e0dfde;
 }
 
+#centeredStack{
+    display:flex;
+    display:-webkit-flex;
+    justify-content:center;
+    align-items:center;
+}
 
-.contactMessageField{
-
+.inputField{
+    width: 70%;
+    height: 30%;
+    resize: none;
+    border-radius: 10px;
+    background-color: #e0dfde;
+    color:black;
 }

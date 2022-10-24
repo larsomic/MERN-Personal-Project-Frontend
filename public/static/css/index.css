@@ -483,6 +483,10 @@ body .content section {
     background-color: #222f40 !important;
 }
 
+#section4{
+    background-color: #222f40 !important;
+}
+
 .homeHeader{
     background-color: #046e8f !important;
     border-radius: 25px;
@@ -508,4 +512,33 @@ body .content section {
     color: #e0dfde;
     font-size: 4vmin !important;
     font-family: 'Lora', sans-serif !important;
+}
+
+#centeredText{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+}
+
+.fullContainer{
+    width: 100%;
+    height: 100%;
+}
+
+#contactButton{
+    color: #e0dfde;
+    background-color: #0090c1;
+    font-family: 'Poppins', sans-serif !important;
+    width: 40%;
+}
+
+#contactField{
+    background-color: #e0dfde;
+}
+
+
+.contactMessageField{
+
 }

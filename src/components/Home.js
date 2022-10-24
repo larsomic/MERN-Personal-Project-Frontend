@@ -106,8 +106,8 @@ class Home extends React.Component {
               <div className='split right'>
                 <Container className='fullContainer'>
                   <div className='fullContainer'>
-                    <Stack className='fullContainer'>
-                      <TextField multiline rows={5} className='contactMessageField' id="contactField" label="Message" variant="filled" style={{width: '25vw', height:'25vh'}}/>
+                    <Stack className='fullContainer' id='centeredStack'>
+                      <textarea placeholder='Message' className='inputField'></textarea>
                       <Button variant="contained" id='contactButton'>Send</Button>
                     </Stack>
                   </div>

@@ -4,6 +4,9 @@ import { Typography } from '@mui/material';
 import Paper from '@mui/material/Paper';
 import Container from '@mui/material/Container';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import { Stack } from '@mui/system';
 
 function isElementVisible(el) {
   if(!el){
@@ -44,7 +47,7 @@ class Home extends React.Component {
   render(){
     return (
       <div>
-        <div style={{display: 'none'}}>
+        <div className='headerContainer'>
           <Header />
         </div>
         <div className='content'>
@@ -70,10 +73,47 @@ class Home extends React.Component {
             </div>
           </section>
           <section id='section2'>
-            About Me
+          <Paper className='centeredPaper'>
+                <div className='split left'>
+                <Container>
+                    <div id='centeredName'>
+                      <Typography variant="h2" className='homeFirstName'>About</Typography>
+                      <Typography variant="h2" className='homeSecondName'>Me.</Typography>
+                    </div>
+                  </Container>     
+                </div>
+                <div className='split right'>
+                  <Container>
+                    <div id='centeredText'>
+                      <Typography variant="h2" className='homeAboutMeText'>
+                        I am a software engineer, specializing in web development. For the last 4 years, I have been developing using JavaScript, Python, C++, and other programming languages.
+                      </Typography>
+                    </div>
+                  </Container>                
+                </div>
+            </Paper>
           </section>
           <section id='section3'>
-            See My Work!
+            <Paper className='centeredPaper'>
+              <div className='split left'>
+              <Container>
+                  <div id='centeredName'>
+                    <Typography variant="h2" className='homeFirstName'>Contact</Typography>
+                    <Typography variant="h2" className='homeSecondName'>Me.</Typography>
+                  </div>
+                </Container>     
+              </div>
+              <div className='split right'>
+                <Container className='fullContainer'>
+                  <div className='fullContainer'>
+                    <Stack className='fullContainer'>
+                      <TextField multiline rows={5} className='contactMessageField' id="contactField" label="Message" variant="filled" style={{width: '25vw', height:'25vh'}}/>
+                      <Button variant="contained" id='contactButton'>Send</Button>
+                    </Stack>
+                  </div>
+                </Container>                
+              </div>
+            </Paper>
           </section>
         </div>
       </div>

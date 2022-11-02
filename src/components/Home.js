@@ -4,9 +4,9 @@ import { Typography } from '@mui/material';
 import Paper from '@mui/material/Paper';
 import Container from '@mui/material/Container';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { Stack } from '@mui/system';
+import Anime, { anime } from 'react-anime';
 
 function isElementVisible(el) {
   if(!el){
@@ -42,6 +42,16 @@ class Home extends React.Component {
         document.querySelector('#app > div > div').style.display = 'none';
       }
     }, true);
+
+    anime({
+      targets: ['.lightBlueArrow'],
+      keyframes: [
+        {scale: 0.85},
+        {scale: 1},
+      ],
+      easing: 'linear',
+      loop: true
+    });
   }
 
   render(){
@@ -68,8 +78,8 @@ class Home extends React.Component {
                 </div>
             </Paper>
             <div className='arrowGroup'  onClick={()=>{document.getElementById("section2").scrollIntoView({behavior: "smooth"})}}>
-              <ArrowForwardIosIcon className='lightBlueArrow'/>
               <ArrowForwardIosIcon className='darkBlueArrow'/>
+              <ArrowForwardIosIcon className='lightBlueArrow'/>
             </div>
           </section>
           <section id='section2'>
@@ -92,6 +102,10 @@ class Home extends React.Component {
                   </Container>                
                 </div>
             </Paper>
+            <div className='arrowGroup'  onClick={()=>{document.getElementById("section3").scrollIntoView({behavior: "smooth"})}}>
+              <ArrowForwardIosIcon className='darkBlueArrow'/>
+              <ArrowForwardIosIcon className='lightBlueArrow'/>
+            </div>
           </section>
           <section id='section3'>
             <Paper className='centeredPaper'>

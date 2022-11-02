@@ -307,12 +307,12 @@ body .content section {
 }
 
 .darkBlueArrow{
+    margin-right: -35%;
     color: #0090c1;
     font-size: 5vmin !important;
 }
 
 .lightBlueArrow{
-    margin-right: -35%;
     color: #98eaff;
     font-size: 5vmin !important;
 }
@@ -512,6 +512,7 @@ body .content section {
     color: #e0dfde;
     font-size: 4vmin !important;
     font-family: 'Lora', sans-serif !important;
+    width: 95%;
 }
 
 #centeredText{

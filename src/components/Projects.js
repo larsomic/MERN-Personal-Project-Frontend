@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Octokit } from "https://cdn.skypack.dev/octokit?dts";
+import { Octokit } from "octokit";
 import Project from './Project.js'
 
 const Projects = (props) => {
@@ -9,7 +9,7 @@ const Projects = (props) => {
             // Octokit.js
             // https://github.com/octokit/core.js#readme
             const octokit = new Octokit({
-                auth: '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',
+                auth: process.env.REACT_APP_GITHUB_AUTH_TOKEN,
             })
             setProjects(await octokit.request('GET /user/repos', {visibility: 'public', affiliation: 'owner'}))
         }

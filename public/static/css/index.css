@@ -545,6 +545,8 @@ body .content section {
     display:-webkit-flex;
     justify-content:center;
     align-items:center;
+    padding-left: unset !important;
+    padding-right: unset !important;
 }
 
 .inputField{
@@ -554,4 +556,23 @@ body .content section {
     border-radius: 10px;
     background-color: #e0dfde;
     color:black;
+}
+
+/* Based off of https://codepen.io/giuseppebianchi/pen/MwoMBa */
+.carousel{
+    display:block;
+    width: 100%;
+    height: 100%;;
+    overflow-x: scroll;
+    white-space: nowrap; 
+}
+
+.item {
+    display: inline-block;
+    width: 100%;
+    margin-right: 25px;
+    height: 100%;
+    position: relative;
+    border-radius: 20px;
+    background-color: #161b22;
 }

@@ -63,6 +63,15 @@ html, body {
     padding-top: 0.5em;
 }
 
+.compactResumeHeader{
+    text-decoration: underline;
+    font-size: large;
+    font-weight: bold !important;
+    font-family: 'Libre Baskerville', serif;
+    color: #1976d2;
+    padding-top: 1em;
+}
+
 .personalLinksContainer{
     display: inline;
     margin-left: 3%;
@@ -78,8 +87,17 @@ html, body {
     max-width: 950px;
 }
 
-.fullPagePaper{
+.compactPageContainer{
+    position: relative;
+    margin: auto;
+    top: 5vh;
     height: 100vh;
+    max-width: 950px;
+    position: static;
+}
+
+.fullPagePaper{
+    border-radius: 12px !important;
 }
 
 .personalLinkNormalText{
@@ -127,6 +145,13 @@ html, body {
     overflow-y: scroll;
 }
 
+.compactFullPage{
+    margin-top: 50px;
+    height: 81%;
+    width: 100%;
+    overflow-y: scroll;
+}
+
 .languageBulletList{
     font-size: 16px;
 }
@@ -157,7 +182,6 @@ html, body {
     transform: translate(-50%, 0);
     top: 7%;
     left: 50%;
-    margin-bottom: 100px !important;
 }
 
 .centerImage{
@@ -303,7 +327,7 @@ body .content section {
     display: table;
     margin: 0 auto;
     transform: rotate(90deg) scale(1.9);;
-    margin-top: 6vh;
+    margin-top: 12vh;
 }
 
 .darkBlueArrow{
@@ -487,6 +511,10 @@ body .content section {
     background-color: #222f40 !important;
 }
 
+#section5{
+    background-color: #222f40 !important;
+}
+
 .homeHeader{
     background-color: #046e8f !important;
     border-radius: 25px;
@@ -545,6 +573,8 @@ body .content section {
     display:-webkit-flex;
     justify-content:center;
     align-items:center;
+    padding-left: unset !important;
+    padding-right: unset !important;
 }
 
 .inputField{
@@ -554,4 +584,23 @@ body .content section {
     border-radius: 10px;
     background-color: #e0dfde;
     color:black;
+}
+
+/* Based off of https://codepen.io/giuseppebianchi/pen/MwoMBa */
+.carousel{
+    display:block;
+    width: 100%;
+    height: 100%;;
+    overflow-x: scroll;
+    white-space: nowrap; 
+}
+
+.item {
+    display: inline-block;
+    width: 100%;
+    margin-right: 25px;
+    height: 100%;
+    position: relative;
+    border-radius: 20px;
+    background-color: #161b22;
 }

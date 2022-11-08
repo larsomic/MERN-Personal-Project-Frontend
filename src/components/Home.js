@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Header from "./Header.js"
 import Projects from './Projects.js';
+import CompactResume from './CompactResume.js'
 import { Typography } from '@mui/material';
 import Paper from '@mui/material/Paper';
 import Container from '@mui/material/Container';
@@ -134,6 +135,25 @@ class Home extends React.Component {
             </div>
           </section>
           <section id='section4'>
+          <Paper className='centeredPaper'>
+              <div className='split left'>
+              <Container>
+                  <div id='centeredName'>
+                    <Typography variant="h2" className='homeFirstName'>My</Typography>
+                    <Typography variant="h2" className='homeSecondName'>Resume.</Typography>
+                  </div>
+                </Container>     
+              </div>
+              <div className='split right'>
+                <CompactResume/>             
+              </div>
+            </Paper>
+            <div className='arrowGroup'  onClick={()=>{document.getElementById("section5").scrollIntoView({behavior: "smooth"})}}>
+              <ArrowForwardIosIcon className='darkBlueArrow'/>
+              <ArrowForwardIosIcon className='lightBlueArrow'/>
+            </div>
+          </section>
+          <section id='section5'>
             <Paper className='centeredPaper'>
               <div className='split left'>
               <Container>

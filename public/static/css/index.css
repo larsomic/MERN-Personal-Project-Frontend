@@ -2,7 +2,11 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-    /* color: white; */
+    --darkMain: #183446;
+    --medDarkMain: #046E8F;
+    --medMain: #0090C1;
+    --medLightMain: #38AECC;
+    --lightMain: #C0FDFB;
 }
 
 #main {
@@ -298,7 +302,7 @@ body .content section {
 }
 
 .homeBackground{    
-    background-color: #222f40;
+    background-color: var(--darkMain);
 }
 
 .centeredPaper{
@@ -332,12 +336,12 @@ body .content section {
 
 .darkBlueArrow{
     margin-right: -35%;
-    color: #0090c1;
+    color: var(--medMain);
     font-size: 5vmin !important;
 }
 
 .lightBlueArrow{
-    color: #98eaff;
+    color: var(--medLightMain);
     font-size: 5vmin !important;
 }
 
@@ -349,14 +353,14 @@ body .content section {
     font-family: 'Poppins', sans-serif !important;
     line-height: 0.9 !important;
     font-size: 9vw !important;
-    color: #0090c1;
+    color: var(--medMain);
 }
 
 .homeSecondName{
     font-family: 'Poppins', sans-serif !important;
     line-height: 0.9 !important;
     font-size: 9vw !important;
-    color: #98eaff;
+    color: var(--medLightMain);
 }
 
 /* https://www.w3schools.com/howto/howto_css_split_screen.asp */
@@ -387,7 +391,7 @@ body .content section {
     }
 
     .firstCircle{
-        background-color: #0090c1;
+        background-color: var(--medMain);
         width: 36vw;
         height: 36vw;
         position: absolute;
@@ -398,7 +402,7 @@ body .content section {
     }
     
     .secondCircle{
-        background-color: #98eaff;
+        background-color: var(--medLightMain);
         width: 36vw;
         height: 36vw;
         position: absolute;
@@ -449,7 +453,7 @@ body .content section {
     }
 
     .firstCircle{
-        background-color: #0090c1;
+        background-color: var(--medMain);
         width: 42vw;
         height: 42vw;
         position: absolute;
@@ -460,7 +464,7 @@ body .content section {
     }
     
     .secondCircle{
-        background-color: #98eaff;
+        background-color: var(--medLightMain);
         width: 42vw;
         height: 42vw;
         position: absolute;
@@ -500,28 +504,28 @@ body .content section {
 }
 
 #section2{
-    background-color: #222f40 !important;
+    background-color: var(--darkMain) !important;
 }
 
 #section3{
-    background-color: #222f40 !important;
+    background-color: var(--darkMain) !important;
 }
 
 #section4{
-    background-color: #222f40 !important;
+    background-color: var(--darkMain) !important;
 }
 
 #section5{
-    background-color: #222f40 !important;
+    background-color: var(--darkMain) !important;
 }
 
 .homeHeader{
-    background-color: #046e8f !important;
+    background-color: var(--medDarkMain) !important;
     border-radius: 25px;
 }
 
-.headerName{
-    color: #ccf5ff !important;
+.headerText{
+    color: var(--lightMain) !important;
 }
 
 .headerContainer{
@@ -558,7 +562,7 @@ body .content section {
 
 #contactButton{
     color: #e0dfde;
-    background-color: #0090c1;
+    background-color: var(--medMain);
     font-family: 'Poppins', sans-serif !important;
     width: 40%;
     margin-top: 15px;
@@ -603,4 +607,37 @@ body .content section {
     position: relative;
     border-radius: 20px;
     background-color: #161b22;
+}
+
+.contactTextbox{
+    background-color: var(--medLightMain);
+    border-radius: 10px;
+}
+
+.contactTextboxLabel{
+    background-color: var(--medLightMain);
+    border-radius: 10px;
+}
+
+.centeredButton{
+    margin-right: auto !important;
+    margin-left: auto !important;
+    width: 50%;
+}
+
+input:focus{
+    color: var(--darkMain) !important;
+}
+
+label{
+    color: var(--darkMain) !important;
+}
+
+button{
+    background-color: var(--medDarkMain) !important;
+    color: var(--lightMain) !important;
+}
+
+form{
+    width: 100%;
 }

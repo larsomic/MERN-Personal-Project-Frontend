@@ -16,6 +16,8 @@ import {
     Route,
   } from "react-router-dom";
 
+import Projects from "./Projects.js"
+
 export default class App extends Component {
     constructor(props){
         super(props);

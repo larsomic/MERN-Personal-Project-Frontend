@@ -94,13 +94,14 @@ const Header = () => {
             component="div"
             sx={{ mr: 2, display:'flex', cursor: 'pointer'}}
             onClick={() =>{clickHomeButton()}}
-            className="headerName"
+            className="headerText"
           >
             Michael Larson
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
+                className='headerText'
                 key={page}
                 onClick={handleNavBarItemClicked}
                 sx={{ my: 2, color: 'powderblue', display: 'block', textTransform: 'none'}}
@@ -113,7 +114,7 @@ const Header = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <MenuIcon style={{color: 'ccf5ff', fontSize: 'xxlarge'}}/> 
+                <MenuIcon className='headerText' style={{ fontSize: 'xxlarge'}}/> 
               </IconButton>
             </Tooltip>
             <Menu

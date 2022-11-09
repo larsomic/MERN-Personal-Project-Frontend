@@ -1,13 +1,17 @@
 import * as React from 'react';
+
 import Header from "./Header.js"
 import Projects from './Projects.js';
 import CompactResume from './CompactResume.js'
-import { Typography } from '@mui/material';
+import Contact from './Contact.js';
+
+import { Typography, TextField } from '@mui/material';
 import Paper from '@mui/material/Paper';
 import Container from '@mui/material/Container';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import Button from '@mui/material/Button';
 import { Stack } from '@mui/system';
+
 import Anime, { anime } from 'react-anime';
 
 let projects = ['Frontend', 'Backend', 'CrimsonCode']
@@ -167,8 +171,7 @@ class Home extends React.Component {
                 <Container className='fullContainer'>
                   <div className='fullContainer'>
                     <Stack className='fullContainer' id='centeredStack'>
-                      <textarea placeholder='Message' className='inputField'></textarea>
-                      <Button variant="contained" id='contactButton'>Send</Button>
+                      <Contact/>
                     </Stack>
                   </div>
                 </Container>                

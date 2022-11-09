@@ -14,14 +14,14 @@ const Projects = (props) => {
             setProjects(await octokit.request('GET /user/repos', {visibility: 'public', affiliation: 'owner'}))
         }
         
-        fetchData().catch(console.error);
-        // setProjects({data:[{id: 242554325, name: "ThanksgivingGameSFML", language: "C++", description: "CrimsonCode2020  WInning Submission", html_url: "https://github.com/larsomic/ThanksgivingGameSFML", updated_at: "2019-12-06T02:43:38Z"},
-        // {id: 242554326, name: "ThanksgivingGameSFML", language: "C++", description: "CrimsonCode2020  WInning Submission", html_url: "https://github.com/larsomic/ThanksgivingGameSFML", updated_at: "2019-12-06T02:43:38Z"}]})
+        // fetchData().catch(console.error);
+        setProjects({data:[{id: 242554325, name: "ThanksgivingGameSFML", language: "C++", description: "CrimsonCode2020  WInning Submission", html_url: "https://github.com/larsomic/ThanksgivingGameSFML", updated_at: "2019-12-06T02:43:38Z"},
+        {id: 242554326, name: "ThanksgivingGameSFML", language: "C++", description: "CrimsonCode2020  WInning Submission", html_url: "https://github.com/larsomic/ThanksgivingGameSFML", updated_at: "2019-12-06T02:43:38Z"}]})
     }, [])
     
     return (
         <div style={{width: '100%', height:'100%'}}>
-            { (projects.data) ? (projects.data.map((project)=> <Project project={project}/>)): 'No Projects'}
+            { (projects.data) ? (projects.data.map((project)=> <Project project={project} key={project.id}/>)): 'No Projects'}
         </div>
   );
 };

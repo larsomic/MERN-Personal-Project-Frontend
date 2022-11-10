@@ -610,7 +610,7 @@ body .content section {
 }
 
 .contactTextbox{
-    background-color: var(--medLightMain);
+    background-color: var(--lightMain);
     border-radius: 10px;
 }
 

@@ -13,6 +13,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
     "dotenv": "^16.0.3",
+    "jspdf": "^2.5.1",
     "moment": "^2.29.4",
     "octokit": "^2.0.10",
     "react": "^18.2.0",

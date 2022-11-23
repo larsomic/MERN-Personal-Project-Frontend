@@ -9,6 +9,7 @@ import About from "./About.js"
 import Contact from "./Contact.js"
 import UnderConstruction from "./UnderConstruction.js"
 import PingPong from "./PingPong.js"
+import CoverLetterCreator from "./CoverLetterCreator.js";
 
 import {
     BrowserRouter as Router,
@@ -34,6 +35,7 @@ export default class App extends Component {
                     <Route path="/contactme" element={<Contact/>} />
                     <Route path="/underconstruction" element={<UnderConstruction/>} />
                     <Route path="/ping-pong" element={<PingPong/>} />
+                    <Route path="/cover-letter-creator" element={<CoverLetterCreator/>} />
                 </Routes>
             </Router>
         )

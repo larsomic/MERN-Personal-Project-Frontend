@@ -5,23 +5,15 @@ import Project from './Project.js'
 const Projects = (props) => {
     const [projects, setProjects] =  React.useState([]);
     React.useEffect(() => {
-        const fetchData = async () => {   
-            // Octokit.js
-            // https://github.com/octokit/core.js#readme
-            const octokit = new Octokit({
-                auth: process.env.REACT_APP_GITHUB_AUTH_TOKEN,
-            })
-            setProjects(await octokit.request('GET /user/repos', {visibility: 'public', affiliation: 'owner'}))
-        }
-        
-        // fetchData().catch(console.error);
-        setProjects({data:[{id: 242554325, name: "ThanksgivingGameSFML", language: "C++", description: "CrimsonCode2020  WInning Submission", html_url: "https://github.com/larsomic/ThanksgivingGameSFML", updated_at: "2019-12-06T02:43:38Z"},
-        {id: 242554326, name: "ThanksgivingGameSFML", language: "C++", description: "CrimsonCode2020  WInning Submission", html_url: "https://github.com/larsomic/ThanksgivingGameSFML", updated_at: "2019-12-06T02:43:38Z"}]})
+        setProjects(
+            {data:[
+                {id:0, name: "Microsoft: Astronomalies", languages: ["Python", "JS", "React"], description: "A project about gas anomaly detection using machine learning to fuse data from satellites and ground weather stations was recently completed in collaboration with Microsoft for my senior project. This resulted in a cutting-edge solution that combines the advantages of satellite data with the accuracy of ground-based weather stations.", github_url: "https://github.com/wsu-cpts421-sp22/microsoft", demo_url:"https://astronomalies.netlify.app/"},
+            ]})
     }, [])
     
     return (
         <div style={{width: '100%', height:'100%'}}>
-            { (projects.data) ? (projects.data.map((project)=> <Project project={project} key={project.id}/>)): 'No Projects'}
+            { (projects.data) ? (projects.data.map((project, index)=><Project project={project} key={index} numProjects={projects.data.length}/>)): 'No Projects'}
         </div>
   );
 };

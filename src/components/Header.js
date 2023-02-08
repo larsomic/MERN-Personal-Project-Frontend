@@ -111,10 +111,10 @@ const Header = () => {
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
+          <Box sx={{ flexGrow: 0, marginLeft: 'auto', marginRight: 0}}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <MenuIcon className='headerText' style={{ fontSize: 'xxlarge'}}/> 
+                <MenuIcon className='headerIcon' style={{ fontSize: 'xxlarge'}}/> 
               </IconButton>
             </Tooltip>
             <Menu

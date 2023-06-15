@@ -2,42 +2,44 @@ import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
+// import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
+// import Menu from '@mui/material/Menu';
+// import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
+// import Tooltip from '@mui/material/Tooltip';
+// import MenuItem from '@mui/material/MenuItem';
 
 
-const clickMyResume = () => {
-  window.location.href='/myresume'
-};
+// const clickMyResume = () => {
+//   document.getElementById("section4").scrollIntoView({behavior: "smooth"})
+// };
 
-const clickMyWork = () => {
-  window.location.href='/mywork'
-};
+// const clickMyWork = () => {
+//   document.getElementById("section3").scrollIntoView({behavior: "smooth"})
+// };
 
-const clickAboutMe = () => {
-  window.location.href='/aboutme'
-};
+// const clickAboutMe = () => {
+//   document.getElementById("menu-appbar").style.display = 'none'
 
-const clickContactMe = () => {
-  window.location.href='/contactme'
-};
+//   document.getElementById("scrollSection2").scrollIntoView({behavior: "smooth"})
+// };
 
-const clickHomeButton = () => {
-  window.location.href='/'
-};
+// const clickContactMe = () => {
+//   document.getElementById("section5").scrollIntoView({behavior: "smooth"})
+// };
 
-var settingFunctionsMap = {
-  "My Work": () =>{clickMyWork()},
-  "My Résumé": () =>{clickMyResume()},
-  "About Me": () =>{clickAboutMe()},
-  "Contact Me": () =>{clickContactMe()},
-};
+// const clickHomeButton = () => {
+//   document.getElementById("section1").scrollIntoView({behavior: "smooth"})
+// };
+
+// var settingFunctionsMap = {
+//   "About Me": () =>{clickAboutMe()},
+//   "My Projects  ": () =>{clickMyWork()},
+//   "My Résumé": () =>{clickMyResume()},
+//   "Contact Me": () =>{clickContactMe()},
+// };
 
 var headerFunctionMap = {
   // "Resume": () =>{clickMyResume()},
@@ -46,7 +48,7 @@ var headerFunctionMap = {
   "GitHub": () =>{window.open('https://github.com/larsomic','_blank')}
 }
 
-const settings = Object.keys(settingFunctionsMap);
+// const settings = Object.keys(settingFunctionsMap);
 const pages = Object.keys(headerFunctionMap);
 
 const Header = () => {
@@ -70,7 +72,7 @@ const Header = () => {
       if (!selectedOption){
         selectedOption = e.target.innerHTML
       }
-      settingFunctionsMap[selectedOption]()
+      // settingFunctionsMap[selectedOption]()
     }
     
     setAnchorElUser(null);
@@ -93,7 +95,7 @@ const Header = () => {
             noWrap
             component="div"
             sx={{ mr: 2, display:'flex', cursor: 'pointer'}}
-            onClick={() =>{clickHomeButton()}}
+            // onClick={() =>{clickHomeButton()}}
             className="headerText"
           >
             Michael Larson
@@ -111,7 +113,7 @@ const Header = () => {
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0, marginLeft: 'auto', marginRight: 0}}>
+          {/* <Box sx={{ flexGrow: 0, marginLeft: 'auto', marginRight: 0}}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <MenuIcon className='headerIcon' style={{ fontSize: 'xxlarge'}}/> 
@@ -139,7 +141,7 @@ const Header = () => {
                 </MenuItem>
               ))}
             </Menu>
-          </Box>
+          </Box> */}
         </Toolbar>
       </Container>
     </AppBar>

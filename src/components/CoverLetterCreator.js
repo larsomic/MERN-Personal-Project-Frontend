@@ -57,7 +57,7 @@ const CoverLetterCreator = (props) => {
         var pdf = new jsPDF('p', 'pt', [792, 612]);
         pdf.html(coverLetter, {
             callback: function(pdf) {
-            pdf.save(`${companyName}.pdf`);
+            pdf.save(`${yourName.replace(' ', '-')}-${companyName}.pdf`);
             },
             x: 0,
             y: 0,

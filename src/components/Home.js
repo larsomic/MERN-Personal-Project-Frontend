@@ -5,16 +5,13 @@ import Projects from './Projects.js';
 import CompactResume from './CompactResume.js'
 import Contact from './Contact.js';
 
-import { Typography, TextField } from '@mui/material';
+import { Typography } from '@mui/material';
 import Paper from '@mui/material/Paper';
 import Container from '@mui/material/Container';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import Button from '@mui/material/Button';
 import { Stack } from '@mui/system';
 
-import Anime, { anime } from 'react-anime';
-
-let projects = ['Frontend', 'Backend', 'CrimsonCode']
+import { anime } from 'react-anime';
 
 function isElementVisible(el) {
   if(!el){
@@ -91,7 +88,7 @@ class Home extends React.Component {
             </div>
           </section>
           <section id='section2'>
-          <Paper className='centeredPaper'>
+          <Paper className='centeredPaper' id='scrollSection2'>
                 <div className='split left'>
                 <Container>
                     <div id='centeredName'>

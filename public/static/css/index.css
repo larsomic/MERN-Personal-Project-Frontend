@@ -731,6 +731,7 @@ svg{
 
 .languageButtons{
     margin-bottom: 10px !important;
+    width: 110px;
 }
 
 .languageTag{
@@ -749,5 +750,5 @@ svg{
 }
 
 .arrowIcon{
-    color: var(--medLightMain) !important;
+    color: var(--medMain);
 }

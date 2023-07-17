@@ -45,8 +45,15 @@ class Project extends React.Component {
                             </Button>
                             <div className='widthGap'></div>
                             <Button onClick={()=>{window.open(this.props.project.github_url,'_blank')}} variant="contained" className='repositoryButton'>
-                                Visit Repository
+                                Visit Repo
                             </Button>
+                            <div className='widthGap'></div>
+                            {this.props.project.backend_github ?
+                                <Button onClick={()=>{window.open(this.props.project.github_url,'_blank')}} variant="contained" className='repositoryButton'>
+                                    Visit Backend Repo
+                                </Button>
+                                :<></>
+                            }
                         </div>
                         <div className='languageButtons'>
                             <Stack direction="row" spacing={1} className="alignItemsCenter">

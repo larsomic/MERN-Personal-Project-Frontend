@@ -49,7 +49,7 @@ class Project extends React.Component {
                             </Button>
                             <div className='widthGap'></div>
                             {this.props.project.backend_github ?
-                                <Button onClick={()=>{window.open(this.props.project.github_url,'_blank')}} variant="contained" className='repositoryButton'>
+                                <Button onClick={()=>{window.open(this.props.project.backend_github,'_blank')}} variant="contained" className='repositoryButton'>
                                     Visit Backend Repo
                                 </Button>
                                 :<></>

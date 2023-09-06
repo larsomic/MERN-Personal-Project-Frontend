@@ -1,0 +1,148 @@
+import React, { useEffect, useState } from 'react';
+import { styled } from '@mui/material/styles';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Paper, Typography, Container, Box } from '@mui/material';
+
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  backgroundColor: theme.palette.primary.main,
+  color: theme.palette.common.white,
+  fontSize: 16,
+  fontWeight: 'bold',
+}));
+
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+  '&:nth-of-type(odd)': {
+    backgroundColor: theme.palette.action.hover,
+  },
+}));
+
+const FantasyFootball = () => {
+  const initScores = [[true, 1, 0, 0, 0, 0, 0, 0, 0, 0]];
+  const initStandings = [['Amin', 0, 0, 0, 0, 0], ['George', 0, 0, 0, 0, 0], ['Jones', 0, 0, 0, 0, 0], ['Mike', 0, 0, 0, 0, 0], ['Peter', 0, 0, 0, 0, 0], ['Ricky', 0, 0, 0, 0, 0], ['Sebas', 0, 0, 0, 0, 0], ['Shyam', 0, 0, 0, 0, 0]]
+  const [weeklyScores, setWeeklyScores] = useState(initScores);
+  const [standings, setStandings] = useState(initStandings);
+
+  const updateStandings = (newScores) => {
+    let newStandings = initStandings.map(s => [...s]);
+    let numWeeks = initScores.length
+    newScores.forEach((weekScore) => {
+      const isAllZeros = weekScore.slice(2).every(score => score === 0);
+      if (isAllZeros){
+        numWeeks --;
+        return
+      };
+
+      for (let i = 0; i < 8; i++) {
+        const [wins, losses, ties] = calculateWLT(weekScore, i + 2);
+        newStandings[i][1] += wins;
+        newStandings[i][2] += losses;
+        newStandings[i][3] += ties;
+        newStandings[i][4] += weekScore[i + 2];
+      }
+    });
+    for (let i = 0; i < 8; i++) {
+      newStandings[i][4] = newStandings[i][4]/numWeeks
+    }
+
+    newStandings.forEach(s => s[5] = ((s[1] + (0.5 * s[3])) / (s[1] + s[2] + s[3])).toFixed(3));
+    setStandings(newStandings);
+  };
+
+  const calculateWLT = (scores, idx) => {
+    const target = scores[idx];
+    let [wins, losses, ties] = [0, 0, 0];
+
+    for (let i = 2; i < scores.length; i++) {
+      if (i === idx) continue;
+      target > scores[i] ? wins++ : target < scores[i] ? losses++ : ties++;
+    }
+    return [wins, losses, ties];
+  };
+
+  useEffect(() => {
+    updateStandings(weeklyScores);
+  }, []);
+
+  const handleScoreChange = (week, player, value) => {
+    const newScores = [...weeklyScores];
+    newScores[week - 1][player] = Number(value || 0);
+    setWeeklyScores(newScores);
+    updateStandings(newScores);
+  };
+
+  return (
+    <Container style={{ overflowY: 'scroll', height: '100vh' }}>
+      <Box mt={4} mb={4}>
+        <Typography variant="h2" align="center">Fantasy Football</Typography>
+      </Box>
+      
+      <Box mt={4} mb={4}>
+        <Typography variant="h4">Weekly Scores</Typography>
+        <TableContainer component={Paper}>
+          <Table sx={{ minWidth: 700 }}>
+            <TableHead>
+              <TableRow>
+                <StyledTableCell>Week</StyledTableCell>
+                {standings.map((s, i) => <StyledTableCell key={i} align="right">{s[0]}</StyledTableCell>)}
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {weeklyScores.map((row, i) => (
+                <StyledTableRow key={i}>
+                  <StyledTableCell>{row[1]}</StyledTableCell>
+                  {row.slice(2).map((score, idx) => (
+                    <StyledTableCell align="right" key={idx}>
+                      {row[0] ? (
+                        <TextField 
+                          inputProps={{ 
+                            style: { 
+                              textAlign: 'right', 
+                              color: 'black', 
+                              backgroundColor: 'white'
+                            } 
+                          }} 
+                          defaultValue={score} 
+                          onBlur={e => handleScoreChange(row[1], idx + 2, e.target.value)}
+                        />
+                      ) : score}
+                    </StyledTableCell>
+                  ))}
+                </StyledTableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Box>
+      
+      <Box mt={4} mb={4}>
+        <Typography variant="h4">Standings</Typography>
+        <TableContainer component={Paper}>
+          <Table sx={{ minWidth: 700 }}>
+            <TableHead>
+              <TableRow>
+                <StyledTableCell>Name</StyledTableCell>
+                <StyledTableCell align="right">Wins</StyledTableCell>
+                <StyledTableCell align="right">Losses</StyledTableCell>
+                <StyledTableCell align="right">Ties</StyledTableCell>
+                <StyledTableCell align="right">Average Points</StyledTableCell>
+                <StyledTableCell align="right">Win Percent</StyledTableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {standings.sort((a, b) => parseFloat(b[5]) - parseFloat(a[5])).map((s, i) => (
+                <StyledTableRow key={i}>
+                  {s.map((cell, idx) => (
+                    <StyledTableCell key={idx} align={idx === 0 ? "left" : "right"}>
+                      {cell}
+                    </StyledTableCell>
+                  ))}
+                </StyledTableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Box>
+    </Container>
+  );
+};
+
+export default FantasyFootball;

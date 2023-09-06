@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { render } from "react-dom";
 import { createRoot } from 'react-dom/client';
 
 import Home from "./Home.js"
@@ -10,6 +9,7 @@ import Contact from "./Contact.js"
 import UnderConstruction from "./UnderConstruction.js"
 import PingPong from "./PingPong.js"
 import CoverLetterCreator from "./CoverLetterCreator.js";
+import FantasyFootball from "./FantasyFootball.js";
 
 import {
     BrowserRouter as Router,
@@ -17,13 +17,7 @@ import {
     Route,
   } from "react-router-dom";
 
-import Projects from "./Projects.js"
-
 export default class App extends Component {
-    constructor(props){
-        super(props);
-    }
-
     render() {
         return(
             <Router>
@@ -36,6 +30,7 @@ export default class App extends Component {
                     <Route path="/underconstruction" element={<UnderConstruction/>} />
                     <Route path="/ping-pong" element={<PingPong/>} />
                     <Route path="/cover-letter-creator" element={<CoverLetterCreator/>} />
+                    <Route path="/fantasy-football" element={<FantasyFootball/>} />
                 </Routes>
             </Router>
         )

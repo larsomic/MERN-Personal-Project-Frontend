@@ -16,14 +16,44 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 const FantasyFootball = () => {
-  const initScores = [[true, 1, 0, 0, 0, 0, 0, 0, 0, 0]];
+  const initScores = [];
+  useEffect(() => {
+  const fetchDataAndUpdateScores = async () => {
+    let tempScores = [];
+
+    try {
+      const response = await fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vTh4BhFId1P5wcC9eJWxnkTxmwI4eQWY8qCIeQXN5Z8H8kXazTdI-ygT2sWgGCF1E7P8qnztlJUwu3z/pub?gid=0&single=true&output=csv');
+      const data = await response.text();
+
+      let weeklyData = data.split('\r\n').slice(1);
+
+      for (let weekData of weeklyData) {
+        const weekData1 = weekData.split(',').map(item => {
+          if (item === 'TRUE') return true;
+          if (item === 'FALSE') return false;
+          return Number(item);
+        });
+        tempScores.push(weekData1);
+      }
+
+      setWeeklyScores(tempScores);
+      updateStandings(tempScores);
+      
+    } catch (error) {
+      console.log('Error:', error);
+    }
+  };
+
+  fetchDataAndUpdateScores();
+}, []);
+
   const initStandings = [['Amin', 0, 0, 0, 0, 0], ['George', 0, 0, 0, 0, 0], ['Jones', 0, 0, 0, 0, 0], ['Mike', 0, 0, 0, 0, 0], ['Peter', 0, 0, 0, 0, 0], ['Ricky', 0, 0, 0, 0, 0], ['Sebas', 0, 0, 0, 0, 0], ['Shyam', 0, 0, 0, 0, 0]]
   const [weeklyScores, setWeeklyScores] = useState(initScores);
   const [standings, setStandings] = useState(initStandings);
 
   const updateStandings = (newScores) => {
     let newStandings = initStandings.map(s => [...s]);
-    let numWeeks = initScores.length
+    let numWeeks = newScores.length
     newScores.forEach((weekScore) => {
       const isAllZeros = weekScore.slice(2).every(score => score === 0);
       if (isAllZeros){
@@ -42,7 +72,6 @@ const FantasyFootball = () => {
     for (let i = 0; i < 8; i++) {
       newStandings[i][4] = newStandings[i][4]/numWeeks
     }
-
     newStandings.forEach(s => s[5] = ((s[1] + (0.5 * s[3])) / (s[1] + s[2] + s[3])).toFixed(3));
     setStandings(newStandings);
   };
@@ -58,10 +87,6 @@ const FantasyFootball = () => {
     return [wins, losses, ties];
   };
 
-  useEffect(() => {
-    updateStandings(weeklyScores);
-  }, []);
-
   const handleScoreChange = (week, player, value) => {
     const newScores = [...weeklyScores];
     newScores[week - 1][player] = Number(value || 0);
@@ -70,7 +95,7 @@ const FantasyFootball = () => {
   };
 
   return (
-    <Container style={{ overflowY: 'scroll', height: '100vh' }}>
+    <Container style={{ overflowY: 'scroll', height: '100vh', paddingBottom: '5%' }}>
       <Box mt={4} mb={4}>
         <Typography variant="h2" align="center">Fantasy Football</Typography>
       </Box>

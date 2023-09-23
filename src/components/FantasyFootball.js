@@ -47,11 +47,13 @@ const FantasyFootball = () => {
   fetchDataAndUpdateScores();
 }, []);
 
-  const initStandings = [['Amin', 0, 0, 0, 0, 0], ['George', 0, 0, 0, 0, 0], ['Jones', 0, 0, 0, 0, 0], ['Mike', 0, 0, 0, 0, 0], ['Peter', 0, 0, 0, 0, 0], ['Ricky', 0, 0, 0, 0, 0], ['Sebas', 0, 0, 0, 0, 0], ['Shyam', 0, 0, 0, 0, 0]]
+  const initStandings = [['Amin', 0, 0, 0, 0, 0, 0], ['George', 0, 0, 0, 0, 0, 0], ['Jones', 0, 0, 0, 0, 0, 0], ['Mike', 0, 0, 0, 0, 0, 0], ['Peter', 0, 0, 0, 0, 0, 0], ['Ricky', 0, 0, 0, 0, 0, 0], ['Sebas', 0, 0, 0, 0, 0, 0], ['Shyam', 0, 0, 0, 0, 0, 0]]
   const [weeklyScores, setWeeklyScores] = useState(initScores);
   const [standings, setStandings] = useState(initStandings);
 
   const updateStandings = (newScores) => {
+    const weeklyStanding = updateWeeklyStandings(newScores[newScores.length-1])
+
     let newStandings = initStandings.map(s => [...s]);
     let numWeeks = newScores.length
     newScores.forEach((weekScore) => {
@@ -70,7 +72,8 @@ const FantasyFootball = () => {
       }
     });
     for (let i = 0; i < 8; i++) {
-      newStandings[i][4] = newStandings[i][4]/numWeeks
+      newStandings[i][4] = (newStandings[i][4]/numWeeks).toFixed(2)
+      newStandings[i][6] = weeklyStanding[i]
     }
     newStandings.forEach(s => s[5] = ((s[1] + (0.5 * s[3])) / (s[1] + s[2] + s[3])).toFixed(3));
     setStandings(newStandings);
@@ -86,6 +89,22 @@ const FantasyFootball = () => {
     }
     return [wins, losses, ties];
   };
+
+  const updateWeeklyStandings = (weeklyScores) => {
+    const arr = weeklyScores.slice(2)
+    const indexedArr = arr.map((value, index) => ({ value, index }));
+    indexedArr.sort((a, b) => b.value - a.value);
+    const places = new Array(arr.length).fill(0);
+    let place = 1;
+    for (let i = 0; i < indexedArr.length; i++) {
+      if (i > 0 && indexedArr[i].value < indexedArr[i - 1].value) {
+        place = i + 1;
+      }
+      places[indexedArr[i].index] = place;
+    }
+    
+    return places
+  }
 
   const handleScoreChange = (week, player, value) => {
     const newScores = [...weeklyScores];
@@ -137,6 +156,34 @@ const FantasyFootball = () => {
           </Table>
         </TableContainer>
       </Box>
+
+      <Box mt={4} mb={4}>
+        <Typography variant="h4">Weekly Rankings</Typography>
+        <TableContainer component={Paper}>
+          <Table sx={{ minWidth: 700 }}>
+            <TableHead>
+              <TableRow>
+                <StyledTableCell>Name</StyledTableCell>
+                <StyledTableCell align="right">Score</StyledTableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {standings
+                .sort((a, b) => a[a.length - 1] - b[b.length - 1])
+                .map((s, i) => (
+                  <StyledTableRow key={i}>
+                    <StyledTableCell key={`${i}-first`} align="left">
+                      {s[0]}
+                    </StyledTableCell>
+                    <StyledTableCell key={`${i}-last`} align="right">
+                      {s[s.length - 1]}
+                    </StyledTableCell>
+                  </StyledTableRow>
+                ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Box>
       
       <Box mt={4} mb={4}>
         <Typography variant="h4">Standings</Typography>
@@ -155,7 +202,7 @@ const FantasyFootball = () => {
             <TableBody>
               {standings.sort((a, b) => parseFloat(b[5]) - parseFloat(a[5])).map((s, i) => (
                 <StyledTableRow key={i}>
-                  {s.map((cell, idx) => (
+                  {s.slice(0, -1).map((cell, idx) => (
                     <StyledTableCell key={idx} align={idx === 0 ? "left" : "right"}>
                       {cell}
                     </StyledTableCell>

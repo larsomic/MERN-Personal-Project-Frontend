@@ -16,14 +16,46 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 const FantasyFootball = () => {
-  const initScores = [[true, 1, 0, 0, 0, 0, 0, 0, 0, 0]];
-  const initStandings = [['Amin', 0, 0, 0, 0, 0], ['George', 0, 0, 0, 0, 0], ['Jones', 0, 0, 0, 0, 0], ['Mike', 0, 0, 0, 0, 0], ['Peter', 0, 0, 0, 0, 0], ['Ricky', 0, 0, 0, 0, 0], ['Sebas', 0, 0, 0, 0, 0], ['Shyam', 0, 0, 0, 0, 0]]
+  const initScores = [];
+  useEffect(() => {
+  const fetchDataAndUpdateScores = async () => {
+    let tempScores = [];
+
+    try {
+      const response = await fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vTh4BhFId1P5wcC9eJWxnkTxmwI4eQWY8qCIeQXN5Z8H8kXazTdI-ygT2sWgGCF1E7P8qnztlJUwu3z/pub?gid=0&single=true&output=csv');
+      const data = await response.text();
+
+      let weeklyData = data.split('\r\n').slice(1);
+
+      for (let weekData of weeklyData) {
+        const weekData1 = weekData.split(',').map(item => {
+          if (item === 'TRUE') return true;
+          if (item === 'FALSE') return false;
+          return Number(item);
+        });
+        tempScores.push(weekData1);
+      }
+
+      setWeeklyScores(tempScores);
+      updateStandings(tempScores);
+      
+    } catch (error) {
+      console.log('Error:', error);
+    }
+  };
+
+  fetchDataAndUpdateScores();
+}, []);
+
+  const initStandings = [['Amin', 0, 0, 0, 0, 0, 0], ['George', 0, 0, 0, 0, 0, 0], ['Jones', 0, 0, 0, 0, 0, 0], ['Mike', 0, 0, 0, 0, 0, 0], ['Peter', 0, 0, 0, 0, 0, 0], ['Ricky', 0, 0, 0, 0, 0, 0], ['Sebas', 0, 0, 0, 0, 0, 0], ['Shyam', 0, 0, 0, 0, 0, 0]]
   const [weeklyScores, setWeeklyScores] = useState(initScores);
   const [standings, setStandings] = useState(initStandings);
 
   const updateStandings = (newScores) => {
+    const weeklyStanding = updateWeeklyStandings(newScores[newScores.length-1])
+
     let newStandings = initStandings.map(s => [...s]);
-    let numWeeks = initScores.length
+    let numWeeks = newScores.length
     newScores.forEach((weekScore) => {
       const isAllZeros = weekScore.slice(2).every(score => score === 0);
       if (isAllZeros){
@@ -40,9 +72,9 @@ const FantasyFootball = () => {
       }
     });
     for (let i = 0; i < 8; i++) {
-      newStandings[i][4] = newStandings[i][4]/numWeeks
+      newStandings[i][4] = (newStandings[i][4]/numWeeks).toFixed(2)
+      newStandings[i][6] = weeklyStanding[i]
     }
-
     newStandings.forEach(s => s[5] = ((s[1] + (0.5 * s[3])) / (s[1] + s[2] + s[3])).toFixed(3));
     setStandings(newStandings);
   };
@@ -58,9 +90,21 @@ const FantasyFootball = () => {
     return [wins, losses, ties];
   };
 
-  useEffect(() => {
-    updateStandings(weeklyScores);
-  }, []);
+  const updateWeeklyStandings = (weeklyScores) => {
+    const arr = weeklyScores.slice(2)
+    const indexedArr = arr.map((value, index) => ({ value, index }));
+    indexedArr.sort((a, b) => b.value - a.value);
+    const places = new Array(arr.length).fill(0);
+    let place = 1;
+    for (let i = 0; i < indexedArr.length; i++) {
+      if (i > 0 && indexedArr[i].value < indexedArr[i - 1].value) {
+        place = i + 1;
+      }
+      places[indexedArr[i].index] = place;
+    }
+    
+    return places
+  }
 
   const handleScoreChange = (week, player, value) => {
     const newScores = [...weeklyScores];
@@ -70,7 +114,7 @@ const FantasyFootball = () => {
   };
 
   return (
-    <Container style={{ overflowY: 'scroll', height: '100vh' }}>
+    <Container style={{ overflowY: 'scroll', height: '100vh', paddingBottom: '5%' }}>
       <Box mt={4} mb={4}>
         <Typography variant="h2" align="center">Fantasy Football</Typography>
       </Box>
@@ -112,6 +156,34 @@ const FantasyFootball = () => {
           </Table>
         </TableContainer>
       </Box>
+
+      <Box mt={4} mb={4}>
+        <Typography variant="h4">Weekly Rankings</Typography>
+        <TableContainer component={Paper}>
+          <Table sx={{ minWidth: 700 }}>
+            <TableHead>
+              <TableRow>
+                <StyledTableCell>Name</StyledTableCell>
+                <StyledTableCell align="right">Score</StyledTableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {standings
+                .sort((a, b) => a[a.length - 1] - b[b.length - 1])
+                .map((s, i) => (
+                  <StyledTableRow key={i}>
+                    <StyledTableCell key={`${i}-first`} align="left">
+                      {s[0]}
+                    </StyledTableCell>
+                    <StyledTableCell key={`${i}-last`} align="right">
+                      {s[s.length - 1]}
+                    </StyledTableCell>
+                  </StyledTableRow>
+                ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Box>
       
       <Box mt={4} mb={4}>
         <Typography variant="h4">Standings</Typography>
@@ -130,7 +202,7 @@ const FantasyFootball = () => {
             <TableBody>
               {standings.sort((a, b) => parseFloat(b[5]) - parseFloat(a[5])).map((s, i) => (
                 <StyledTableRow key={i}>
-                  {s.map((cell, idx) => (
+                  {s.slice(0, -1).map((cell, idx) => (
                     <StyledTableCell key={idx} align={idx === 0 ? "left" : "right"}>
                       {cell}
                     </StyledTableCell>

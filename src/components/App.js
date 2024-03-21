@@ -10,6 +10,7 @@ import UnderConstruction from "./UnderConstruction.js"
 import PingPong from "./PingPong.js"
 import CoverLetterCreator from "./CoverLetterCreator.js";
 import FantasyFootball from "./FantasyFootball.js";
+import MarchMadness2024 from "./MarchMadness2024.js";
 
 import {
     BrowserRouter as Router,
@@ -31,6 +32,7 @@ export default class App extends Component {
                     <Route path="/ping-pong" element={<PingPong/>} />
                     <Route path="/cover-letter-creator" element={<CoverLetterCreator/>} />
                     <Route path="/fantasy-football" element={<FantasyFootball/>} />
+                    <Route path="/march-madness" element={<MarchMadness2024/>} />
                 </Routes>
             </Router>
         )

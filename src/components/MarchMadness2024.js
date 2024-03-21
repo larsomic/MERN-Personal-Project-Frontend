@@ -2,22 +2,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Autocomplete, Box, TextField, Typography, useTheme, useMediaQuery, Button} from '@mui/material';
 
-const TeamStats = ({team}) => {
-  return (
-    <Box>
-      <Typography>
-        Region: {team.Region}
-      </Typography>
-      <Typography>
-        Adjusted Efficiency Margin: {team.AdjEM}
-      </Typography>
-      <Typography>
-        Adjusted Tempo: {team.AdjT}
-      </Typography>
-    </Box>
-  )
-}
-
 function normDist(x) {
   const mean = 0
   const std = 10.37
@@ -161,47 +145,61 @@ useEffect(() => {
     },
   };
 
-  const statsContainerStyle = {
+  const statsStyle = {
     position: 'absolute',
-    top: '50%',
-    transform: 'translateY(-50%)',
     display: 'flex',
     flexDirection: 'column',
     gap: '10px', // Adjust the space between Typography elements
+    zIndex: 2,
   };
-
+  
+  const statsAboveBelowStyle = {
+    ...statsStyle,
+    width: '100%', // Use full width for better alignment on mobile
+    textAlign: 'center', // Center the text on mobile
+    top: 'calc(50% - 150px)', // Position above the donut on mobile
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+  };
+  
+  const statsLeftRightStyle = {
+    ...statsStyle,
+    top: '50%',
+    transform: 'translateY(-50%)',
+  };
+  
   const leftStatsStyle = {
-    ...statsContainerStyle,
-    right: '60%', // Adjust based on the size and position of your donut chart
+    ...statsLeftRightStyle,
+    left: 'calc(50% - 220px)', // Adjust based on the size of your donut chart
   };
-
+  
   const rightStatsStyle = {
-    ...statsContainerStyle,
-    left: '60%', // Adjust based on the size and position of your donut chart
+    ...statsLeftRightStyle,
+    left: 'calc(50% + 120px)', // Adjust based on the size of your donut chart
   };
 
   const autocompleteStyles1 = {
     position: 'absolute',
-    width: '50%', // Adjust as needed
+    width: matches ? '80%' : '50%', // Use a percentage to ensure it fits within the screen
     '& .MuiAutocomplete-root': {
       position: 'absolute',
       left: '50%',
-      top: '50%',
-      transform: 'translate(-88%, 40%)',
+      top: matches ? '85%' : '50%', // Move to the bottom on mobile
+      transform: matches ? 'translate(-100%, -250%)' : 'translate(-88%, 40%)',
     },
   };
-
+  
   const autocompleteStyles2 = {
     position: 'absolute',
-    width: '50%', 
+    width: matches ? '80%' : '50%', // Consistent with the first one for mobile friendliness
     '& .MuiAutocomplete-root': {
       position: 'absolute',
       left: '50%',
-      top: '50%',
-      transform: 'translate(-112%, -160%)',
+      top: matches ? '95%' : '50%', // Further down for the second autocomplete
+      transform: matches ? 'translate(-100%, 140%)' : 'translate(-112%, -160%)',
     },
   };
-
+  
   const vsStyle = {
     position: 'absolute',
     width: '100%',
@@ -254,7 +252,6 @@ useEffect(() => {
             fullWidth
           />
       </Box>
-      {firstTeam && <TeamStats team={tournamentData[firstTeam]}/>}
 
       <Typography sx={vsStyle}>Vs.</Typography>
       <Box sx={{ ...autocompleteStyles2, top: matches ? '75%' : '100%', left: matches ? '50%' : '75%' }}>
@@ -274,18 +271,38 @@ useEffect(() => {
       </Box>
       {teamOnePercentage && pointDiff1 &&  pointDiff2 &&
       <>
-      <Box sx={leftStatsStyle}>
-        <Typography>Chance: {teamOnePercentage.toFixed(2)}%</Typography>
-        <Typography>Point Diff: {pointDiff1?.toFixed(2)}</Typography>
-      </Box>
-      <Box sx={rightStatsStyle}>
-        <Typography>Chance: {(100 - teamOnePercentage).toFixed(2)}%</Typography>
-        <Typography>Point Diff: {pointDiff2?.toFixed(2)}</Typography>
-      </Box>
-</>
-}
+    {!matches ? (
+          <>
+            {/* Left stats for larger screens */}
+            <Box sx={leftStatsStyle}>
+              <Typography>Chance: {teamOnePercentage.toFixed(2)}%</Typography>
+              <Typography>Point Diff: {pointDiff1?.toFixed(2)}</Typography>
+            </Box>
+
+            {/* Right stats for larger screens */}
+            <Box sx={rightStatsStyle}>
+              <Typography>Chance: {(100 - teamOnePercentage).toFixed(2)}%</Typography>
+              <Typography>Point Diff: {pointDiff2?.toFixed(2)}</Typography>
+            </Box>
+          </>
+        ) : (
+          <>
+            {/* Stats above and below for mobile screens */}
+            <Box sx={statsAboveBelowStyle}>
+              <Typography>Chance: {teamOnePercentage.toFixed(2)}%</Typography>
+              <Typography>Point Diff: {pointDiff1?.toFixed(2)}</Typography>
+            </Box>
+
+            <Box sx={{...statsAboveBelowStyle, top: 'calc(50% + 200px)'}}>
+              <Typography>Chance: {(100 - teamOnePercentage).toFixed(2)}%</Typography>
+              <Typography>Point Diff: {pointDiff2?.toFixed(2)}</Typography>
+            </Box>
+          </>
+        )}
+    </>
+    }
     {simulatedWinner && (
-        <Typography sx={simulationTextStyle}>
+        <Typography sx={simulationTextStyle} bolder>
           Winner: {simulatedWinner}
         </Typography>
       )}

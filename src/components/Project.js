@@ -37,19 +37,19 @@ class Project extends React.Component {
                             </div>
                         </div>
                         <div className='fullSize'>
-                            <iframe src={this.props.project.demo_url} title="description" className='projectIframe'></iframe> 
+                            <iframe src={this.props.project.demo_url} title="description" className='projectIframe' scrolling="no"></iframe> 
                         </div>  
                         <div className='projectButtons'> 
-                            <Button onClick={()=>{window.open(this.props.project.demo_url,'_blank')}} variant="contained" className='repositoryButton'>
+                            <Button onClick={()=>{window.open(this.props.project.demo_url,'_blank')}} variant="contained" className='repositoryButton' sx={{minWidth:'13px', justifyContent: 'center', alignItems: 'center'}}>
                                 Full Demo
                             </Button>
                             <div className='widthGap'></div>
-                            <Button onClick={()=>{window.open(this.props.project.github_url,'_blank')}} variant="contained" className='repositoryButton'>
+                            <Button onClick={()=>{window.open(this.props.project.github_url,'_blank')}} variant="contained" className='repositoryButton' sx={{minWidth:'13px', justifyContent: 'center', alignItems: 'center'}}>
                                 Visit Repo
                             </Button>
                             <div className='widthGap'></div>
                             {this.props.project.backend_github ?
-                                <Button onClick={()=>{window.open(this.props.project.backend_github,'_blank')}} variant="contained" className='repositoryButton'>
+                                <Button onClick={()=>{window.open(this.props.project.backend_github,'_blank')}} variant="contained" className='repositoryButton' sx={{minWidth:'13px', justifyContent: 'center', alignItems: 'center'}}>
                                     Visit Backend Repo
                                 </Button>
                                 :<></>

@@ -101,7 +101,7 @@ class Home extends React.Component {
                   <Container>
                     <div id='centeredText'>
                       <Typography variant="h2" className='homeAboutMeText'>
-                        I am a software engineer, specializing in web development. For the last 4 years, I have been developing using JavaScript, Python, C++, and other programming languages.
+                        I am a software engineer, specializing in web development. For the last 6 years, I have been developing using JavaScript, Python, C++, and other programming languages.
                       </Typography>
                     </div>
                   </Container>                

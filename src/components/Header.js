@@ -28,9 +28,8 @@ const Header = () => {
             variant="h6"
             noWrap
             component="div"
-            sx={{ mr: 2, display:'flex'}}
+            sx={{ mr: 2, display:'flex', fontWeight: 'bold'}}
             className="headerText"
-            bolder
           >
             Michael Larson
           </Typography>
